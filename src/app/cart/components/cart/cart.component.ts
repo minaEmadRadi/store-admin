@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -7,11 +8,15 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  constructor(private service: CartService) { }
+  constructor(private service: CartService, private build: FormBuilder) { }
   cartProducts: any[] = [];
   total: number = 0;
+  form!: FormGroup;
   success: boolean = false
   ngOnInit(): void {
+    this.form = this.build.group({
+      start: [''], end: ['']
+    })
     this.getCartProducts()
   }
 
@@ -79,6 +84,6 @@ export class CartComponent implements OnInit {
     }
   }
 
-
+  applyFilter() { }
 
 }

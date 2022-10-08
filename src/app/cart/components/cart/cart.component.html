@@ -1,6 +1,6 @@
 <div class="cartBox">
-    <!-- [formGroup]="form" formControlName="start" formControlName="end"-->
-    <!-- (click)="applyFilter()" -->
+    <!--formControlName="start" -->
+    <!-- -->
     <!-- *ngFor="let item of carts; let index = index" -->
     <!-- {{item.date | date:"longDate"}}
     {{item.products.length}}
@@ -12,18 +12,18 @@
     {{item.item.price}}
     {{item.quantity}}
     {{item.item.price * item.quantity }} -->
-    <form>
+    <form [formGroup]="form">
         <div class="row">
             <div class="col-md-3">
                 <label for="">Start Date</label>
-                <input type="date" class="form-control">
+                <input type="date" formControlName="start" class="form-control">
             </div>
             <div class="col-md-3">
                 <label for="">End Date</label>
-                <input type="date" class="form-control">
+                <input type="date" formControlName="end" class="form-control">
             </div>
             <div class="col-md-2 d-flex align-items-end">
-                <button class="btn btn-success">Apply</button>
+                <button class="btn btn-success" (click)="applyFilter()">Apply</button>
             </div>
         </div>
     </form>
