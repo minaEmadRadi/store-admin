@@ -1,54 +1,97 @@
-<div class="cartBox" *ngIf="!success">
-    <h1 class="text-danger">Shopping Cart</h1>
-    <div class="headCart">
-        <p class="lead">You have <label class="text-danger ">{{cartProducts.length}}</label> item in your cart</p>
-        <span class="text-danger card-header" (click)="clearCart()">Clear Shopping Cart</span>
-    </div>
+<div class="cartBox">
+    <!-- [formGroup]="form" formControlName="start" formControlName="end"-->
+    <!-- (click)="applyFilter()" -->
+    <!-- *ngFor="let item of carts; let index = index" -->
+    <!-- {{item.date | date:"longDate"}}
+    {{item.products.length}}
+    (click)="deleteCart(item.id)"
+    (click)="view(index)"
+    *ngFor="let item of products; let i = index"
+    <img src="{{item.item.image}}" alt="">
+    {{item.item.title}}
+    {{item.item.price}}
+    {{item.quantity}}
+    {{item.item.price * item.quantity }} -->
+    <form>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="">Start Date</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="">End Date</label>
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-success">Apply</button>
+            </div>
+        </div>
+    </form>
+
     <table class="table table-striped">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th></th>
-                <th>Name</th>
-                <th>Price</th>
-                <th style="width: 25%;">Quantity</th>
-                <th>Totle</th>
+                <th>Date</th>
+                <th>Quantity</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of cartProducts; let index = index">
-                <td><img src="{{item.item.image}}" alt=""></td>
-                <td>{{item.item.title}}</td>
-                <td>{{item.item.price}} L.E</td>
+            <tr>
+                <td></td>
+                <td>date</td>
                 <td>
-                    <div class="quantity">
-                        <button class="btn btn-dark" (click)="addAmount(index)">+</button>
-                        <!-- (change)="detectChange()"  التغير عل الcart بعد ما تخلص -->
-                        <input type="number" min="1" max="10"
-                            class="form-control d-inline-flex mx-auto  text-center w-50" value="amount"
-                            autocomplete="off" [(ngModel)]="item.quantity" (ngModelChange)="detectChange()">
-
-                        <button class="btn btn-dark" (click)="minsAmount(index)">-</button>
-                    </div>
+                    length
                 </td>
-                <td>{{item.item.price * item.quantity}} L.E</td>
                 <td>
-                    <button class="btn btn-danger" (click)="deleteProduct(index)">Delete</button>
+                    <button class="btn btn-danger mx-2">Delete</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#viewCart">View</button>
                 </td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>Total : {{total}} LE</th>
-                <th><button class="btn btn-success" (click)="addCart()">Order Now</button></th>
-            </tr>
-        </tfoot>
     </table>
 
 </div>
-<div class="alert alert-success" role="alert" *ngIf="success"><strong>Well done!</strong> Your Order is Successfully
-    Send</div>
+
+
+
+<div class="modal fade " id="viewCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 900px!important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cartBox">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th style="width: 25%;">Quantity</th>
+                                <th>Totle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>img</td>
+                                <td>title</td>
+                                <td> L.E</td>
+                                <td>
+                                    qty
+                                </td>
+                                <td>T L.E</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
