@@ -15,7 +15,12 @@ export class CartComponent implements OnInit {
     this.form = this.build.group({
       start: [''], end: ['']
     })
-
+    this.getAllCarts();
+  }
+  getAllCarts() {
+    this.service.getAllCarts().subscribe((res: any) => {
+      this.carts = res
+    })
   }
 
   applyFilter() { }

@@ -9,7 +9,7 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCarts() {
+  getAllCarts(params?: any) {
     return this.http.get(environment.baseApi + 'carts')
   }
 }
