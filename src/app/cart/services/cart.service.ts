@@ -15,6 +15,10 @@ export class CartService {
 
     return this.http.get(environment.baseApi + 'carts', { params })
   }
+  deleteCartItems(id: number) {
+    return this.http.delete(environment.baseApi + 'carts/' + id)
+
+  }
   getAllCarts() {
     return this.http.get(environment.baseApi + 'carts')
   }
