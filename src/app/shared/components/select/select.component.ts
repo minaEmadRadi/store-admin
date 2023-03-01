@@ -16,7 +16,6 @@ export class SelectComponent implements OnInit {
   }
   detectChanges(event: any) {
     this.selectedValue.emit(event)
-
   }
 
 }
